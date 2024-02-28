@@ -1,0 +1,11 @@
+var sheet_id = "XXXXX";
+var sheet_name = "TVOC_sensor_G3";
+
+function doGet(e){
+  var ss = SpreadsheetApp.openById(sheet_id);
+  var sheet = ss.getSheetByName(sheet_name);
+  var gas = String(e.parameter.gas);
+  var DatumTijd = new Date();
+  var timestamp = Utilities.formatDate(DatumTijd, "GMT+1", "yyyy-MM-dd HH:mm:ss");
+  sheet.appendRow([timestamp,gas]);
+}
